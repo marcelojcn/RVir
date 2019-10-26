@@ -8,6 +8,8 @@ public class CubeController : MonoBehaviour
 {
     public List<GameObject> CubePrefabList;
     int index = 0;
+    Vector3 mouse;
+    Vector3 worldPos;
 
     public void generateColoredCubeSquare()
     {
@@ -29,6 +31,18 @@ public class CubeController : MonoBehaviour
 
     public void Start()
     {
-        generateColoredCubeSquare();
+       
+    }
+
+    public void Update()
+    {
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            //mouse = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f);
+          
+            generateColoredCubeSquare();
+
+        }
     }
 }
