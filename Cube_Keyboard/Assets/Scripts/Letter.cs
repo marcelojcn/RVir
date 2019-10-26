@@ -60,8 +60,10 @@ public class Letter : MonoBehaviour
             // Draw Diacritics
             for (float y = (transform.position.y + 1.08f); y >= (transform.position.y - 1.08f); y -= 1.08f)
             {
-                for (float x = (transform.position.x - 1.08f); x <= (transform.position.x + 1.08f); x += 1.08f)
+                // 1.09f instead of 1.08f because of float precision
+                for (float x = (transform.position.x - 1.08f); x <= (transform.position.x + 1.09f); x += 1.08f)
                 {
+                    // Check if not drawing Diacritic over the Letter
                     if (!(x == transform.position.x && y == transform.position.y) && index < Diacritics.Count) 
                     {
                         // Instantiate the Diacritic
@@ -81,6 +83,7 @@ public class Letter : MonoBehaviour
         // Write Letter Value
         Debug.Log(value);
 
+        // Check if Diacritic
         if (IsDiacritic)
         {
             // Get Main Letter
@@ -95,7 +98,6 @@ public class Letter : MonoBehaviour
             Clean();
         }
     }
-
 
     public void Clean() 
     {
