@@ -13,25 +13,35 @@ public class CubeController : MonoBehaviour
 
     public void generateColoredCubeSquare()
     {
-         for (float z = 0; z < 3; z += 1.08f)
-            {
+        for (float z = 0; z < 3; z += 1.08f)
+        {
             for (float y = 3; y > 0; y -= 1.08f)
             {
                 for (float x = 0; x < 3; x += 1.08f)
                 {
-                    Instantiate(CubePrefabList[index], new Vector3(x, y, z), Quaternion.identity);
-                    if (index < 11) index++;
+                    // Check if not the key in the cube's middle
+                    if (!(x == 1.08f && y == 1.92f && z == 1.08f))
+                    {   
+                        // Instantiate the key
+                        Instantiate(CubePrefabList[index], new Vector3(x, y, z), Quaternion.identity);
+
+                        // Increase index
+                        if (index < CubePrefabList.Count)
+                        {
+                            index++;
+                        }
+                    }
                 }
             }
         }
 
-       
+
     }
 
 
     public void Start()
     {
-       
+
     }
 
     public void Update()
@@ -40,7 +50,7 @@ public class CubeController : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             //mouse = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f);
-          
+
             generateColoredCubeSquare();
 
         }
