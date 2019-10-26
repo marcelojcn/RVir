@@ -83,7 +83,9 @@ public class Letter : MonoBehaviour
         // Write Letter Value
         Debug.Log(value);
         
+        // Get Text object
         Text text = GameObject.Find($"Text").gameObject.GetComponent<Text>();
+        // Add letter
         text.text = text.text + value;
 
 
