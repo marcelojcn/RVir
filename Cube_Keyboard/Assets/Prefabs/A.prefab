@@ -104,6 +104,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1653b203e1f9c4b4fb414261f2570d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letter: A
-  displayText: {fileID: 3607551698365210756, guid: 8a3098b3f08adc546a15d7b4707b8cc8,
-    type: 3}
+  value: A
+  outlineShader: {fileID: 4800000, guid: 12a688587438f004f9902ed3b3184275, type: 3}
