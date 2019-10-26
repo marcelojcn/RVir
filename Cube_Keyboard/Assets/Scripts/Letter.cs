@@ -82,6 +82,10 @@ public class Letter : MonoBehaviour
     {
         // Write Letter Value
         Debug.Log(value);
+        
+        Text text = GameObject.Find($"Text").gameObject.GetComponent<Text>();
+        text.text = text.text + value;
+
 
         // Check if Diacritic
         if (IsDiacritic)
