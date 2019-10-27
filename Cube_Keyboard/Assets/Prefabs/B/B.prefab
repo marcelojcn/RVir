@@ -105,3 +105,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: B
+  IsDiacritic: 0
+  Diacritics: []

@@ -125,10 +125,12 @@ public class Letter : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
+            // Get object render
             Renderer renderer = GetComponent<Renderer>();
             
             // toggle visibility:
             renderer.enabled = !renderer.enabled;
+
         }
     }
 

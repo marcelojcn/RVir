@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: I
+  IsDiacritic: 0
   Diacritics:
   - {fileID: 8836179514326587805, guid: a22638dd9413afe45ae517fa6a7bb152, type: 3}
   - {fileID: 8836179514326587805, guid: 44438f14df05b6d4c98981af34ffd8c2, type: 3}

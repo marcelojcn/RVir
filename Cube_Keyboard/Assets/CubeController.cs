@@ -51,7 +51,7 @@ public class CubeController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-
+            //creates cube only if not existent
             if (isCreated == false)
             {
                 generateColoredCubeSquare();
