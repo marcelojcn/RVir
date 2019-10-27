@@ -121,6 +121,17 @@ public class Letter : MonoBehaviour
         MouseOverTimestamp = null;
     }
 
+    public void Update()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            Renderer renderer = GetComponent<Renderer>();
+            
+            // toggle visibility:
+            renderer.enabled = !renderer.enabled;
+        }
+    }
+
     #region Protected Methods
     protected string RemoveDiacritics(string text)
     {

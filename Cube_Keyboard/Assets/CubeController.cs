@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Linq;
 
 
 public class CubeController : MonoBehaviour
@@ -10,6 +11,7 @@ public class CubeController : MonoBehaviour
     int index = 0;
     Vector3 mouse;
     Vector3 worldPos;
+    bool isCreated = false;
 
     public void generateColoredCubeSquare()
     {
@@ -49,10 +51,14 @@ public class CubeController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            //mouse = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f);
 
-            generateColoredCubeSquare();
-
+            if (isCreated == false)
+            {
+                generateColoredCubeSquare();
+                isCreated = true;
+            }
+            
         }
+
     }
 }
