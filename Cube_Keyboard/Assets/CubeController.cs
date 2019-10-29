@@ -28,6 +28,7 @@ public class CubeController : MonoBehaviour
                         // Instantiate the key
                         Instantiate(CubePrefabList[index], new Vector3(x, y, z), Quaternion.identity);
 
+                        
                         // Increase index
                         if (index < CubePrefabList.Count)
                         {

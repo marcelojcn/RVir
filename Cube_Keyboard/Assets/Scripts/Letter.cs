@@ -29,6 +29,7 @@ public class Letter : MonoBehaviour
         //Fetch the Material from the Renderer of the GameObject
         Material material = GetComponent<Renderer>().material;
         material.shader = Shader.Find("Outlined/Uniform");
+        material.renderQueue = 3000;
     }
 
     private void OnMouseExit()
@@ -36,6 +37,7 @@ public class Letter : MonoBehaviour
         //Fetch the Material from the Renderer of the GameObject
         Material material = GetComponent<Renderer>().material;
         material.shader = Shader.Find("Standard");
+        material.renderQueue = 3000;
 
         // If not a Diacritic and has Diacritics and Timestamp saved
         if (!IsDiacritic && Diacritics.Any() && MouseOverTimestamp.HasValue)
@@ -83,6 +85,7 @@ public class Letter : MonoBehaviour
     {
         // Write Letter Value
         Debug.Log(value);
+      
         
         // Get Text object
         Text text = GameObject.Find($"Text").gameObject.GetComponent<Text>();
@@ -94,8 +97,10 @@ public class Letter : MonoBehaviour
         if (IsDiacritic)
         {
             // Get Main Letter
-            Letter letter = GameObject.Find($"{RemoveDiacritics(value)}(Clone)").gameObject.GetComponent<Letter>();
-
+            GameObject diacriticGO = GameObject.Find($"{RemoveDiacritics(value)[0]}(Clone)");
+            GameObject diacriticGOGO = diacriticGO.gameObject;
+            Letter letter = diacriticGOGO.GetComponent<Letter>();
+            Debug.Log(RemoveDiacritics(value));
             // Clean Letter
             letter.Clean();
         }
