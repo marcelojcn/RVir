@@ -12,6 +12,7 @@ public class CubeController : MonoBehaviour
     Vector3 mouse;
     Vector3 worldPos;
     bool isCreated = false;
+    float speed = 10f;
 
     public void generateColoredCubeSquare()
     {
@@ -56,9 +57,9 @@ public class CubeController : MonoBehaviour
             {
                 generateColoredCubeSquare();
                 isCreated = true;
-            }
-            
-        }
 
+            }            
+        }
+       
     }
 }

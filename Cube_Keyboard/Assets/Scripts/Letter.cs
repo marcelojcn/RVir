@@ -17,6 +17,7 @@ public class Letter : MonoBehaviour
     private List<GameObject> CreatedDiacritics;
 
     private DateTime? MouseOverTimestamp;
+    //bool space = false;
 
     private void Start()
     {
@@ -53,7 +54,7 @@ public class Letter : MonoBehaviour
         }
 
         // If it is not a diacritic and none of the diacritic were created 
-        if (!IsDiacritic && !CreatedDiacritics.Any() && Diacritics.Any() && (DateTime.Now - MouseOverTimestamp.Value).Seconds >= 2)
+        if (!IsDiacritic && !CreatedDiacritics.Any() && Diacritics.Any() && (DateTime.Now - MouseOverTimestamp.Value).Seconds >= 1)
         {
             int index = 0;
 
@@ -98,7 +99,7 @@ public class Letter : MonoBehaviour
             // Clean Letter
             letter.Clean();
         }
-        else 
+        else
         {
             // Clean himself
             Clean();
@@ -120,18 +121,32 @@ public class Letter : MonoBehaviour
         // If a letter was written then clean MouseOverTimeStamp 
         MouseOverTimestamp = null;
     }
+    /*private void OnMouseDown()
+    {
 
+        // Get Text object
+        Text text = GameObject.Find($"Text").gameObject.GetComponent<Text>();
+        // Add letter
+        text.text = text.text + "A";
+        space = true;
+
+    }*/
     public void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {
+            
             // Get object render
             Renderer renderer = GetComponent<Renderer>();
-            
+
             // toggle visibility:
             renderer.enabled = !renderer.enabled;
 
+            
         }
+        
+        
+
     }
 
     #region Protected Methods
