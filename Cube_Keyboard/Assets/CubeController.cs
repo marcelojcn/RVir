@@ -11,9 +11,12 @@ public class CubeController : MonoBehaviour
     int index = 0;
     Vector3 mouse;
     Vector3 worldPos;
-    bool isCreated = false;
-    float speed = 10f;
+    static bool isCreated = false;
 
+    public void setCreated(bool created)
+    {
+        isCreated = created;
+    }
     public void generateColoredCubeSquare()
     {
         for (float z = 0; z < 3; z += 1.08f)
@@ -59,7 +62,12 @@ public class CubeController : MonoBehaviour
                 generateColoredCubeSquare();
                 isCreated = true;
 
-            }            
+            }
+            else
+            {
+                index = 0;
+                isCreated = false;
+            }
         }
        
     }

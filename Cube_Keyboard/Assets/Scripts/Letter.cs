@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 public class Letter : MonoBehaviour
 {
+  
     public string value;
     public bool IsDiacritic;
 
@@ -126,28 +127,21 @@ public class Letter : MonoBehaviour
         // If a letter was written then clean MouseOverTimeStamp 
         MouseOverTimestamp = null;
     }
-    /*private void OnMouseDown()
-    {
-
-        // Get Text object
-        Text text = GameObject.Find($"Text").gameObject.GetComponent<Text>();
-        // Add letter
-        text.text = text.text + "A";
-        space = true;
-
-    }*/
+   
     public void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            
+            Destroy(gameObject);
+            /*
             // Get object render
             Renderer renderer = GetComponent<Renderer>();
 
             // toggle visibility:
             renderer.enabled = !renderer.enabled;
-
+            */
             
+
         }
         
         
