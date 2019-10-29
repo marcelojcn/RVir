@@ -12,6 +12,7 @@ public class CubeController : MonoBehaviour
     Vector3 mouse;
     Vector3 worldPos;
     static bool isCreated = false;
+   
 
     public void setCreated(bool created)
     {
@@ -19,6 +20,15 @@ public class CubeController : MonoBehaviour
     }
     public void generateColoredCubeSquare()
     {
+        Camera camera = Camera.main;
+        GameObject sim = GameObject.Find("[VRSimulator_CameraRig]");
+        Vector3 pos = camera.transform.position;
+        Vector3 dir = camera.transform.forward;
+        Quaternion rot = camera.transform.rotation;
+        float spawnDis = 10;
+        Vector3 destination = pos + dir * spawnDis;
+       
+
         for (float z = 0; z < 3; z += 1.08f)
         {
             for (float y = 3; y > 0; y -= 1.08f)
@@ -29,7 +39,7 @@ public class CubeController : MonoBehaviour
                     if (!(x == 1.08f && y == 1.92f && z == 1.08f))
                     {   
                         // Instantiate the key
-                        Instantiate(CubePrefabList[index], new Vector3(x, y, z), Quaternion.identity);
+                        Instantiate(CubePrefabList[index], new Vector3(x, y, z) + destination, Quaternion.identity);
 
                         
                         // Increase index
@@ -53,12 +63,14 @@ public class CubeController : MonoBehaviour
 
     public void Update()
     {
+        
 
         if (Input.GetMouseButtonDown(1))
         {
             //creates cube only if not existent
             if (isCreated == false)
             {
+                
                 generateColoredCubeSquare();
                 isCreated = true;
 

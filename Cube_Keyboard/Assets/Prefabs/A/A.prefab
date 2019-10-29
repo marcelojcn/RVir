@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3815229606161076651}
   - component: {fileID: 8495443029147108327}
   m_Layer: 0
-  m_Name: A 1
+  m_Name: A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,10 +122,10 @@ MonoBehaviour:
   value: A
   IsDiacritic: 0
   Diacritics:
-  - {fileID: 6898034091866502058, guid: 9ddef468a4fdcc14fb2caa6dde9fa8d8, type: 3}
-  - {fileID: 6898034091866502058, guid: 57b605fdbb7892a43ad35dad2513fef1, type: 3}
-  - {fileID: 6898034091866502058, guid: 1cb45ee5511176846bdbb6bd968f518e, type: 3}
-  - {fileID: 6898034091866502058, guid: 1ddb8345b8550ce42b299b2426ead567, type: 3}
+  - {fileID: 2829199254214678831, guid: 9ddef468a4fdcc14fb2caa6dde9fa8d8, type: 3}
+  - {fileID: 9178613028544552811, guid: 57b605fdbb7892a43ad35dad2513fef1, type: 3}
+  - {fileID: 2436670633016186950, guid: 1cb45ee5511176846bdbb6bd968f518e, type: 3}
+  - {fileID: 1427707321011680658, guid: 1ddb8345b8550ce42b299b2426ead567, type: 3}
 --- !u!1 &7598302331665139643
 GameObject:
   m_ObjectHideFlags: 0
