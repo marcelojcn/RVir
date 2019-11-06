@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Linq;
-
+using Assets.Utilities;
+using Assets.Utilities.Enums;
 
 public class CubeController : MonoBehaviour
 {
@@ -20,6 +21,12 @@ public class CubeController : MonoBehaviour
     }
     public void generateColoredCubeSquare()
     {
+        //CSVLogger csvLogger = new CSVLogger("aaa", DifficultyEnum.Easy, KeyboardTypeEnum.MonoCubic);
+        //csvLogger.Write("a");
+        //csvLogger.Write("b", "1");
+        //csvLogger.Write("c");
+        //csvLogger.Write("d", "2");
+
         GameObject mainCube = GameObject.Find("MainCube");
 
         Camera camera = Camera.main;
