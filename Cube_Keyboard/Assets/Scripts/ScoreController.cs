@@ -38,7 +38,6 @@ public class ScoreController : MonoBehaviour
         else if(!(_word.text).StartsWith(_text.text)) 
         {
             FindObjectOfType<AudioManager>().Play("Error");
-            _text.text = string.Empty;
         }
     }
 
