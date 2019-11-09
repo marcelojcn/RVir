@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -787,12 +787,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 5b4604c391d3329439e92e42be08fee4,
     type: 3}
   m_PrefabInstance: {fileID: 58221481}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &278394467 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1538727058887424, guid: be540b97364be0a4890e39e62ac89ed1,
-    type: 3}
-  m_PrefabInstance: {fileID: 294522374}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &281484450
 PrefabInstance:
@@ -2384,12 +2378,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 329785861}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &972545409 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1384746914293964, guid: be540b97364be0a4890e39e62ac89ed1,
-    type: 3}
-  m_PrefabInstance: {fileID: 294522374}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &973531202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 0e59a88e689220846a177c4af16b7e90,
@@ -2465,12 +2453,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc0b74aafdf405448a1373f53604f720, type: 3}
---- !u!1 &974277785 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1000013941130086, guid: be540b97364be0a4890e39e62ac89ed1,
-    type: 3}
-  m_PrefabInstance: {fileID: 294522374}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &974277786 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000011401111930, guid: be540b97364be0a4890e39e62ac89ed1,
@@ -3814,12 +3796,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoPopulateObjectReferences: 1
-  actualBoundaries: {fileID: 974277785}
-  actualHeadset: {fileID: 1527404554}
-  actualLeftController: {fileID: 278394467}
-  actualRightController: {fileID: 1489633779}
-  modelAliasLeftController: {fileID: 972545409}
-  modelAliasRightController: {fileID: 1636413702}
+  actualBoundaries: {fileID: 0}
+  actualHeadset: {fileID: 0}
+  actualLeftController: {fileID: 0}
+  actualRightController: {fileID: 0}
+  modelAliasLeftController: {fileID: 0}
+  modelAliasRightController: {fileID: 0}
   cachedSystemSDKInfo:
     baseTypeName: VRTK.SDK_BaseSystem
     fallbackTypeName: VRTK.SDK_FallbackSystem
@@ -3856,12 +3838,6 @@ Transform:
   m_Father: {fileID: 914548623}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1489633779 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1391022766006510, guid: be540b97364be0a4890e39e62ac89ed1,
-    type: 3}
-  m_PrefabInstance: {fileID: 294522374}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1504740714 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 5b4604c391d3329439e92e42be08fee4,
@@ -3873,12 +3849,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 22c6be2d08e70c442ae5d2f82dbe3f2d,
     type: 3}
   m_PrefabInstance: {fileID: 1265838370}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1527404554 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1587602180963074, guid: be540b97364be0a4890e39e62ac89ed1,
-    type: 3}
-  m_PrefabInstance: {fileID: 294522374}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1536410304
 PrefabInstance:
@@ -4014,12 +3984,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c0547ebc4ef9874f9b917d23d6e64cf, type: 3}
---- !u!1 &1636413702 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1883185261795400, guid: be540b97364be0a4890e39e62ac89ed1,
-    type: 3}
-  m_PrefabInstance: {fileID: 294522374}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1641286055
 PrefabInstance:
   m_ObjectHideFlags: 0
