@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Assets.Utilities
 {
-    public class CSVLogger
+    public class CSVLogger : MonoBehaviour
     {
         private string _playerName;
         private DifficultyEnum _difficulty;

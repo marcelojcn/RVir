@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Utilities;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -98,6 +99,7 @@ public class Letter : MonoBehaviour
         //text.text = text.text + value;
 
         FindObjectOfType<AudioManager>().Play("Click");
+
 
         // Check if Diacritic
         if (IsDiacritic)
