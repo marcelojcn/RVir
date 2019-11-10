@@ -16,7 +16,12 @@ public class InputName : MonoBehaviour
     public void StoreName()
     {
         GameObject Manager = GameObject.Find("Manager");
-        Manager.GetComponent<GameManager>().theName = inputField.GetComponent<Text>().text;
+
+        var input = inputField.GetComponent<Text>().text;
+        if (!string.IsNullOrWhiteSpace(input))
+        {
+            Manager.GetComponent<GameManager>().theName = input;
+        };
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

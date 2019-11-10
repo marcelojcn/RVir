@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     private void Awake() {
         theName = Guid.NewGuid().ToString();
         DontDestroyOnLoad(gameObject);
-
     }
 
 

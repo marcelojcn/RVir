@@ -54,6 +54,6 @@ public class ScoreController : MonoBehaviour
 
     private void SelectWord()
     {
-        _word.text = _words[Random.Range(0, _words.Length - 1)];
+        _word.text = _words[Random.Range(0, _words.Length)];
     }
 }
