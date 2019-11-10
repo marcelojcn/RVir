@@ -782,12 +782,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 887006257}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &252589237 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1391022766006510, guid: be540b97364be0a4890e39e62ac89ed1,
-    type: 3}
-  m_PrefabInstance: {fileID: 294522374}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &264446954 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 5b4604c391d3329439e92e42be08fee4,
@@ -2055,12 +2049,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 565234513}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &574306133 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1384746914293964, guid: be540b97364be0a4890e39e62ac89ed1,
-    type: 3}
-  m_PrefabInstance: {fileID: 294522374}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &653973571 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a21de15aeea8b5d46a77a67a7e26f2e2,
@@ -2154,12 +2142,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b86ea68bdbb307347840946d10f6576b, type: 3}
---- !u!1 &726886623 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1883185261795400, guid: be540b97364be0a4890e39e62ac89ed1,
-    type: 3}
-  m_PrefabInstance: {fileID: 294522374}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &789450904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2659,12 +2641,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: cfe4d127c4da3a042886b3b39a9d69dc,
     type: 3}
   m_PrefabInstance: {fileID: 1840158980}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1059638977 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1538727058887424, guid: be540b97364be0a4890e39e62ac89ed1,
-    type: 3}
-  m_PrefabInstance: {fileID: 294522374}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1080492459
 PrefabInstance:
@@ -3948,12 +3924,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoPopulateObjectReferences: 1
-  actualBoundaries: {fileID: 1984809120}
-  actualHeadset: {fileID: 1900543586}
-  actualLeftController: {fileID: 1059638977}
-  actualRightController: {fileID: 252589237}
-  modelAliasLeftController: {fileID: 574306133}
-  modelAliasRightController: {fileID: 726886623}
+  actualBoundaries: {fileID: 0}
+  actualHeadset: {fileID: 0}
+  actualLeftController: {fileID: 0}
+  actualRightController: {fileID: 0}
+  modelAliasLeftController: {fileID: 0}
+  modelAliasRightController: {fileID: 0}
   cachedSystemSDKInfo:
     baseTypeName: VRTK.SDK_BaseSystem
     fallbackTypeName: VRTK.SDK_FallbackSystem
@@ -5286,12 +5262,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1831489411}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1900543586 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1587602180963074, guid: be540b97364be0a4890e39e62ac89ed1,
-    type: 3}
-  m_PrefabInstance: {fileID: 294522374}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1917488208 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 2a75046247a25e64c8e40eb5ec527286,
@@ -5303,12 +5273,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: b86ea68bdbb307347840946d10f6576b,
     type: 3}
   m_PrefabInstance: {fileID: 689032013}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1984809120 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1000013941130086, guid: be540b97364be0a4890e39e62ac89ed1,
-    type: 3}
-  m_PrefabInstance: {fileID: 294522374}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1991689614 stripped
 Transform:

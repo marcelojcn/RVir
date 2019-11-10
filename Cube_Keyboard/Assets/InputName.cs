@@ -10,13 +10,13 @@ using UnityEngine.SceneManagement;
 
 public class InputName : MonoBehaviour
 {
-    public string theName;
     public GameObject inputField;
     public GameObject TextDisplay;
 
     public void StoreName()
     {
-        theName = inputField.GetComponent<Text>().text;
+        GameObject Manager = GameObject.Find("Manager");
+        Manager.GetComponent<GameManager>().theName = inputField.GetComponent<Text>().text;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
