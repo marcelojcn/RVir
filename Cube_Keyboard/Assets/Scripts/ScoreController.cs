@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreController : MonoBehaviour
 {
+
+    private Text Score;
     private Text _word;
     private Text _text;
 
@@ -16,6 +19,7 @@ public class ScoreController : MonoBehaviour
     private int _wordsWritten = 0;
     private int _lettersMistaken = 0;
     private int _backtrackingCount = 0;
+    private int _score = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +40,7 @@ public class ScoreController : MonoBehaviour
 
         _text = GameObject.Find($"Text").gameObject.GetComponent<Text>();
         _word = GameObject.Find($"Word").gameObject.GetComponent<Text>();
+        Score = GameObject.Find($"Score").gameObject.GetComponent<Text>();
         SelectWord();
     }
 
@@ -47,6 +52,11 @@ public class ScoreController : MonoBehaviour
             _text.text = _text.text.Remove(_text.text.Length - 1);
             _backtrackingCount++;
         }
+
+        Score.text = "Score: " + _score.ToString("0");            
+
+            Debug.Log("aa");
+
     }
 
     public void AddLetter(string value)
@@ -63,6 +73,7 @@ public class ScoreController : MonoBehaviour
         if (_text.text.Equals(_word.text))
         {
             FindObjectOfType<AudioManager>().Play("Success");
+            _score++;
             _text.text = string.Empty;
             _wordsWritten++;
             SelectWord();
@@ -71,6 +82,6 @@ public class ScoreController : MonoBehaviour
 
     private void SelectWord()
     {
-        _word.text = _words[Random.Range(0, _words.Length)];
+        _word.text = _words[UnityEngine.Random.Range(0, _words.Length)];
     }
 }
