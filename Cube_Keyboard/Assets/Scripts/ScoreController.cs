@@ -26,6 +26,12 @@ public class ScoreController : MonoBehaviour
 
     public void AddLetter(string value)
     {
+        if (!(_word.text).StartsWith(_text.text + value))
+        {
+            FindObjectOfType<AudioManager>().Play("Error");
+            return;
+        }
+
         _text.text = _text.text + value;
 
         if (_text.text.Equals(_word.text))
@@ -34,10 +40,6 @@ public class ScoreController : MonoBehaviour
             _text.text = string.Empty;
 
             SelectWord();
-        }
-        else if(!(_word.text).StartsWith(_text.text)) 
-        {
-            FindObjectOfType<AudioManager>().Play("Error");
         }
     }
 
