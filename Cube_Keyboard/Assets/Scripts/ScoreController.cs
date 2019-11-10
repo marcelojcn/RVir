@@ -8,7 +8,10 @@ public class ScoreController : MonoBehaviour
     private Text _word;
     private Text _text;
 
-    private string[] _words = { "OLÁ", "ABC", "VERDE", "AZUL", "DESERTO" };
+    private string[] _words = {};
+    private string[] _wordsEasy = { "OLÁ", "ABC", "VERDE", "AZUL", "DESERTO" };
+    private string[] _wordsMedium = { "SUPER", "ADORÁVEL", "ESPAÇO", "MOCHILA", "TARTARUGA" };
+    private string[] _wordsHard = { "HIPÓPOTAMO", "AÁÉÇ", "RESTAURAÇÃO", "ESTÁS", "COMPUTADOR" };
 
     private int _wordsWritten = 0;
     private int _lettersMistaken = 0;
@@ -17,6 +20,20 @@ public class ScoreController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject Manager = GameObject.Find("Manager");
+        switch (Manager.GetComponent<GameManager>().difficulty)
+        {
+            case "medium":
+                _words = _wordsMedium;
+                break;
+            case "hard":
+                _words = _wordsHard;
+                break;
+            default:
+                _words = _wordsEasy;
+                break;
+        }
+
         _text = GameObject.Find($"Text").gameObject.GetComponent<Text>();
         _word = GameObject.Find($"Word").gameObject.GetComponent<Text>();
         SelectWord();
