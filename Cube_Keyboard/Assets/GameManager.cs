@@ -3,30 +3,20 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using System;
+using System.Linq;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private float _timeLeft = 10.0f;
-    public Text _startText;
+    public string theName;
+    public string difficulty = "easy";
 
-    void Start()
-    {
-        
+    private void Awake() {
+        theName = Guid.NewGuid().ToString();
+        DontDestroyOnLoad(gameObject);
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        _timeLeft-= Time.deltaTime;
-        
-        _startText.text = "Time Left " + (_timeLeft).ToString("0");
-        if (_timeLeft <= 0)
-            GameOver();
-    }
 
-    private void GameOver()
-    {
-        SceneManager.LoadScene("IntroMenu");
-    }
+
 }
