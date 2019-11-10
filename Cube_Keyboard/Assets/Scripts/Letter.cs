@@ -19,10 +19,12 @@ public class Letter : MonoBehaviour
 
     private DateTime? MouseOverTimestamp;
     //bool space = false;
+    private ScoreController _scoreController;
 
     private void Start()
     {
         CreatedDiacritics = new List<GameObject>();
+        _scoreController = GameObject.Find($"Controller").gameObject.GetComponent<ScoreController>();
     }
 
     private void OnMouseEnter() 
@@ -86,13 +88,16 @@ public class Letter : MonoBehaviour
     {
         // Write Letter Value
         Debug.Log(value);
-      
-        
-        // Get Text object
-        Text text = GameObject.Find($"Text").gameObject.GetComponent<Text>();
-        // Add letter
-        text.text = text.text + value;
 
+
+        _scoreController.AddLetter(value);
+
+        //// Get Text object
+        //Text text = GameObject.Find($"Text").gameObject.GetComponent<Text>();
+        //// Add letter
+        //text.text = text.text + value;
+
+        FindObjectOfType<AudioManager>().Play("Click");
 
         // Check if Diacritic
         if (IsDiacritic)
