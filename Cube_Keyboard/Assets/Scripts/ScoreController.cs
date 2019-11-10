@@ -10,6 +10,10 @@ public class ScoreController : MonoBehaviour
 
     private string[] _words = { "OLÁ", "ABC", "VERDE", "AZUL", "DESERTO" };
 
+    private int _wordsWritten = 0;
+    private int _lettersMistaken = 0;
+    private int _backtrackingCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,14 +25,19 @@ public class ScoreController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(1) && (_text.text.Length > 0))
+        {
+            _text.text = _text.text.Remove(_text.text.Length - 1);
+            _backtrackingCount++;
+        }
     }
 
     public void AddLetter(string value)
     {
-        if (!(_word.text).StartsWith(_text.text + value))
+        if (!_word.text.StartsWith(_text.text + value))
         {
             FindObjectOfType<AudioManager>().Play("Error");
+            _lettersMistaken++;
             return;
         }
 
@@ -38,12 +47,12 @@ public class ScoreController : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().Play("Success");
             _text.text = string.Empty;
-
+            _wordsWritten++;
             SelectWord();
         }
     }
 
-    private void SelectWord() 
+    private void SelectWord()
     {
         _word.text = _words[Random.Range(0, _words.Length - 1)];
     }
