@@ -14,17 +14,20 @@ namespace Assets.Utilities
     public class CSVLogger : MonoBehaviour
     {
         private string _playerName;
-        private DifficultyEnum _difficulty;
+        private string _difficulty;
         private KeyboardTypeEnum _keyboardType;
         private string _fileName;
 
-        public CSVLogger(string playerName, DifficultyEnum difficulty, KeyboardTypeEnum keyboardType) 
-        {
-            _playerName = playerName;
-            _difficulty = difficulty;
-            _keyboardType = keyboardType;
 
-            _fileName = $"{_playerName}_{_difficulty.ToString()}_{_keyboardType.ToString()}.csv";
+        private void Awake()
+        {
+            var manager = GameObject.Find("Manager").GetComponent<GameManager>();
+
+            _playerName = manager.theName;
+            _difficulty = manager.difficulty;
+            _keyboardType = KeyboardTypeEnum.MonoCubic;
+
+            _fileName = $"{_playerName}_{_difficulty}_{_keyboardType.ToString()}.csv";
 
             using (var writer = new StreamWriter($"C:\\{_fileName}", append: true))
             using (var csv = new CsvWriter(writer))

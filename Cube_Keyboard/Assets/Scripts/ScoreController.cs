@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Utilities;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,8 @@ public class ScoreController : MonoBehaviour
     private int _backtrackingCount = 0;
     private int _score = 0;
 
+    private CSVLogger _logger;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +44,8 @@ public class ScoreController : MonoBehaviour
         _text = GameObject.Find($"Text").gameObject.GetComponent<Text>();
         _word = GameObject.Find($"Word").gameObject.GetComponent<Text>();
         Score = GameObject.Find($"Score").gameObject.GetComponent<Text>();
+
+        _logger = FindObjectOfType<CSVLogger>();
         SelectWord();
     }
 
@@ -49,13 +54,12 @@ public class ScoreController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) && (_text.text.Length > 0))
         {
-            _text.text = _text.text.Remove(_text.text.Length - 1);
             _backtrackingCount++;
+            _logger.Write($"Backtrack letter: {_text.text[_text.text.Length-1]}", $"Backtrack count: {_backtrackingCount}");
+            _text.text = _text.text.Remove(_text.text.Length - 1);
         }
 
-        Score.text = "Score: " + _score.ToString("0");            
-
-            Debug.Log("aa");
+        Score.text = "Score: " + _score.ToString("0");
 
     }
 
@@ -64,18 +68,22 @@ public class ScoreController : MonoBehaviour
         if (!_word.text.StartsWith(_text.text + value))
         {
             FindObjectOfType<AudioManager>().Play("Error");
+            _logger.Write($"Mistake letter: {value}", $"Mistaken letters: {_lettersMistaken}");
             _lettersMistaken++;
             return;
         }
 
+        _logger.Write($"Add letter: {value}");
         _text.text = _text.text + value;
 
         if (_text.text.Equals(_word.text))
         {
+            
             FindObjectOfType<AudioManager>().Play("Success");
             _score++;
             _text.text = string.Empty;
             _wordsWritten++;
+            _logger.Write($"Finished word: {_word.text}", $"Finished Words: {_wordsWritten}");
             SelectWord();
         }
     }
@@ -83,5 +91,7 @@ public class ScoreController : MonoBehaviour
     private void SelectWord()
     {
         _word.text = _words[UnityEngine.Random.Range(0, _words.Length)];
+
+        _logger.Write($"Word selected: {_word.text}");
     }
 }
