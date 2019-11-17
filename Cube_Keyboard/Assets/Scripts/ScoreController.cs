@@ -68,8 +68,8 @@ public class ScoreController : MonoBehaviour
         if (!_word.text.StartsWith(_text.text + value))
         {
             FindObjectOfType<AudioManager>().Play("Error");
-            _logger.Write($"Mistake letter: {value}", $"Mistaken letters: {_lettersMistaken}");
             _lettersMistaken++;
+            _logger.Write($"Mistake letter: {value}", $"Mistaken letters: {_lettersMistaken}");
             return;
         }
 
