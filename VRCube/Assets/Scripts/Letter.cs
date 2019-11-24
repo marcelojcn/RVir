@@ -19,8 +19,12 @@ public class Letter : MonoBehaviour
     private List<GameObject> CreatedDiacritics;
 
     private DateTime? MouseOverTimestamp;
+    private float? _exitTimestamp;
     //bool space = false;
     private ScoreController _scoreController;
+
+
+    public Material OutlinedMaterial;
 
     private void Start()
     {
@@ -28,15 +32,14 @@ public class Letter : MonoBehaviour
         _scoreController = GameObject.Find($"Controller").gameObject.GetComponent<ScoreController>();
     }
 
-    private void OnMouseEnter() 
+
+    private void OnTriggerEnter(Collider other)
     {
         //Fetch the Material from the Renderer of the GameObject
-        Material material = GetComponent<Renderer>().material;
-        material.shader = Shader.Find("Outlined/Uniform");
-        material.renderQueue = 3000;
+        GetComponent<Renderer>().material = OutlinedMaterial;
     }
 
-    private void OnMouseExit()
+    private void OnTriggerExit(Collider other)
     {
         //Fetch the Material from the Renderer of the GameObject
         Material material = GetComponent<Renderer>().material;
@@ -48,9 +51,14 @@ public class Letter : MonoBehaviour
         {
             MouseOverTimestamp = null;
         }
+
+        if (CreatedDiacritics.Any())
+        {
+            _exitTimestamp = Time.time;
+        }
     }
 
-    private void OnMouseOver()
+    private void OnTriggerStay(Collider other)
     {
         // If not a Diacritic and has Diacritics and no Timestamp saved
         if (!IsDiacritic && Diacritics.Any() && !MouseOverTimestamp.HasValue)
@@ -64,17 +72,21 @@ public class Letter : MonoBehaviour
         {
             int index = 0;
 
+            float spacing = 0.01f;
+
             // Draw Diacritics
-            for (float y = (transform.position.y + 1.08f); y >= (transform.position.y - 1.08f); y -= 1.08f)
+            for (float y = (transform.position.y + (0.1f+spacing)); y >= (transform.position.y - (0.1f + spacing)); y -= (0.1f + spacing))
             {
                 // 1.09f instead of 1.08f because of float precision
-                for (float x = (transform.position.x - 1.08f); x <= (transform.position.x + 1.09f); x += 1.08f)
+                for (float x = (transform.position.x - (0.1f + spacing)); x <= (transform.position.x + (0.1f + spacing)); x += (0.1f + spacing))
                 {
                     // Check if not drawing Diacritic over the Letter
-                    if (!(x == transform.position.x && y == transform.position.y) && index < Diacritics.Count) 
+                    if (!(x == transform.position.x && y == transform.position.y) && index < Diacritics.Count)
                     {
                         // Instantiate the Diacritic
                         GameObject newDiacritic = Instantiate(Diacritics[index], new Vector3(x, y, transform.position.z), Quaternion.identity);
+                        newDiacritic.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                        newDiacritic.transform.parent = transform.parent;
 
                         // Save the created Diacritic's object
                         CreatedDiacritics.Add(newDiacritic);
@@ -84,22 +96,21 @@ public class Letter : MonoBehaviour
                 }
             }
         }
+
+
+        if (OVRInput.GetDown(OVRInput.RawButton.A))
+        {
+            Write();
+        }
     }
-    private void OnMouseDown()
+    private void Write()
     {
         // Write Letter Value
         Debug.Log(value);
 
-
         _scoreController.AddLetter(value);
 
-        //// Get Text object
-        //Text text = GameObject.Find($"Text").gameObject.GetComponent<Text>();
-        //// Add letter
-        //text.text = text.text + value;
-
         FindObjectOfType<AudioManager>().Play("Click");
-
 
         // Check if Diacritic
         if (IsDiacritic)
@@ -133,26 +144,15 @@ public class Letter : MonoBehaviour
 
         // If a letter was written then clean MouseOverTimeStamp 
         MouseOverTimestamp = null;
+        _exitTimestamp = null;
     }
-   
-    public void Update()
+
+    private void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (!IsDiacritic && _exitTimestamp.HasValue && ((Time.time - _exitTimestamp.Value) >= 1f)) 
         {
-            Destroy(gameObject);
-            /*
-            // Get object render
-            Renderer renderer = GetComponent<Renderer>();
-
-            // toggle visibility:
-            renderer.enabled = !renderer.enabled;
-            */
-            
-
+            Clean();
         }
-        
-        
-
     }
 
     #region Protected Methods

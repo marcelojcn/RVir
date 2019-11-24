@@ -2,15 +2,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreController : MonoBehaviour
 {
 
-    private Text Score;
-    private Text _word;
-    private Text _text;
+    private TextMeshPro Score;
+    private TextMeshPro _word;
+    private TextMeshPro _text;
 
     private string[] _words = {};
     private string[] _wordsEasy = { "OLÁ", "ABC", "VERDE", "AZUL", "DESERTO" };
@@ -41,9 +42,9 @@ public class ScoreController : MonoBehaviour
                 break;
         }
 
-        _text = GameObject.Find($"Text").gameObject.GetComponent<Text>();
-        _word = GameObject.Find($"Word").gameObject.GetComponent<Text>();
-        Score = GameObject.Find($"Score").gameObject.GetComponent<Text>();
+        _text = GameObject.Find($"Text").gameObject.GetComponent<TextMeshPro>();
+        _word = GameObject.Find($"Word").gameObject.GetComponent<TextMeshPro>();
+        Score = GameObject.Find($"Score").gameObject.GetComponent<TextMeshPro>();
 
         _logger = FindObjectOfType<CSVLogger>();
         SelectWord();
@@ -52,7 +53,7 @@ public class ScoreController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) && (_text.text.Length > 0))
+        if (OVRInput.GetDown(OVRInput.RawButton.B) && (_text.text.Length > 0))
         {
             _backtrackingCount++;
             _logger.Write($"Backtrack letter: {_text.text[_text.text.Length-1]}", $"Backtrack count: {_backtrackingCount}");

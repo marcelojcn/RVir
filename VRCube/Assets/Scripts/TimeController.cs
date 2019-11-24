@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 public class TimeController : MonoBehaviour
 {
     private float timeLeft = 60.0f;
-    public Text timer;
+    public TextMeshPro timer;
 
     private void Update()
     {

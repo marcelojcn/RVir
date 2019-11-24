@@ -112,7 +112,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: U
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 7650216072802984691}
   - component: {fileID: 4868984751611163239}
   - component: {fileID: 483192419480025968}
+  - component: {fileID: 54643676561699592}
   m_Layer: 0
   m_Name: U
   m_TagString: Untagged
@@ -313,3 +314,20 @@ MonoBehaviour:
   - {fileID: 7568842449774986639, guid: ce65d3946c42f464c8c50faa82059eeb, type: 3}
   - {fileID: 7076919170718805158, guid: a9f9bcc675041fc4ba139886bc997429, type: 3}
   - {fileID: 8798233676274356264, guid: 19eaddc57bbb1dc469bbbeeeb79a91ab, type: 3}
+  OutlinedMaterial: {fileID: 2100000, guid: 4472d36e5bcb8d3459463dcbf6a971d3, type: 2}
+--- !u!54 &54643676561699592
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9043842632855667797}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
