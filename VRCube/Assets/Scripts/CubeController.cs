@@ -15,6 +15,11 @@ public class CubeController : MonoBehaviour
     public GameObject LeftKeyboard;
     private GameObject _createdLeftKeyboard;
 
+    public GameObject PlanarKeyboard;
+    private GameObject _createdPlanarKeyboard;
+
+    public KeyboardTypeEnum KeyboardType = KeyboardTypeEnum.OneCube;
+
     public bool isCreated => _createdMainKeyboard != null;
 
     public void generateMainKeyboard()
@@ -46,6 +51,21 @@ public class CubeController : MonoBehaviour
         }
     }
 
+
+    public void generatePlanarKeyboard()
+    {
+        Vector3 destination = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTrackedRemote) + new Vector3(-0.1f, 1.3f, -0.1f);
+
+        if (_createdPlanarKeyboard != null)
+        {
+            _createdPlanarKeyboard.transform.position = destination;
+        }
+        else
+        {
+            _createdPlanarKeyboard = Instantiate(PlanarKeyboard, destination, Quaternion.identity);
+        }
+    }
+
     public void Clean() 
     {
         Destroy(_createdMainKeyboard);
@@ -53,16 +73,43 @@ public class CubeController : MonoBehaviour
 
     public void Update()
     {
-        if (OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger) > 0 && MainKeyboard != null)
+        switch (KeyboardType) 
         {
-            generateMainKeyboard();
+            case KeyboardTypeEnum.OneCube:
+                if (OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger) > 0 && MainKeyboard != null)
+                {
+                    generateMainKeyboard();
+                }
+
+                break;
+            case KeyboardTypeEnum.TwoCube:
+                if (OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger) > 0 && MainKeyboard != null)
+                {
+                    generateMainKeyboard();
+                }
+
+                if (OVRInput.Get(OVRInput.RawAxis1D.LIndexTrigger) > 0 && LeftKeyboard != null)
+                {
+                    generateLeftKeyboard();
+                }
+                break;
+            case KeyboardTypeEnum.Planar:
+                if (OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger) > 0 && PlanarKeyboard != null)
+                {
+                    generatePlanarKeyboard();
+                }
+                break;
         }
 
 
-        if (OVRInput.Get(OVRInput.RawAxis1D.LIndexTrigger) > 0 && LeftKeyboard != null)
-        {
-            generateLeftKeyboard();
-        }
+        
 
     }
+}
+
+public enum KeyboardTypeEnum 
+{
+    OneCube,
+    TwoCube,
+    Planar
 }

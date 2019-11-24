@@ -23,18 +23,22 @@ public class ScoreController : MonoBehaviour
     private int _backtrackingCount = 0;
     private int _score = 0;
 
+    public DifficultyTypeEnum DifficultyType = DifficultyTypeEnum.Easy;
+
     private CSVLogger _logger;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameObject Manager = GameObject.Find("Manager");
-        switch (Manager.GetComponent<GameManager>().difficulty)
+        switch (DifficultyType)
         {
-            case "medium":
+            case DifficultyTypeEnum.Medium:
                 _words = _wordsMedium;
                 break;
-            case "hard":
+            case DifficultyTypeEnum.Hard:
+                _words = _wordsHard;
+                break;
+            case DifficultyTypeEnum.Easy:
                 _words = _wordsHard;
                 break;
             default:
@@ -95,4 +99,12 @@ public class ScoreController : MonoBehaviour
 
         _logger.Write($"Word selected: {_word.text}");
     }
+}
+
+
+public enum DifficultyTypeEnum 
+{
+    Easy,
+    Medium,
+    Hard
 }
