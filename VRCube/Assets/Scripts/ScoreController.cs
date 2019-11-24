@@ -53,7 +53,7 @@ public class ScoreController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.RawButton.B) && (_text.text.Length > 0))
+        if ((OVRInput.GetDown(OVRInput.RawButton.B) || OVRInput.GetDown(OVRInput.RawButton.Y)) && (_text.text.Length > 0))
         {
             _backtrackingCount++;
             _logger.Write($"Backtrack letter: {_text.text[_text.text.Length-1]}", $"Backtrack count: {_backtrackingCount}");

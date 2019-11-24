@@ -98,7 +98,7 @@ public class Letter : MonoBehaviour
         }
 
 
-        if (OVRInput.GetDown(OVRInput.RawButton.A))
+        if (OVRInput.GetDown(OVRInput.RawButton.A) || OVRInput.GetDown(OVRInput.RawButton.X))
         {
             Write();
         }

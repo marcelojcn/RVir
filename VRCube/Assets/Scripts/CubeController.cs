@@ -8,36 +8,60 @@ using Assets.Utilities.Enums;
 
 public class CubeController : MonoBehaviour
 {
-    public GameObject CubeKeyboard;
-    private GameObject _createdKeyboard;
+    public GameObject MainKeyboard;
+    private GameObject _createdMainKeyboard;
 
-    public bool isCreated => _createdKeyboard != null;
 
-    public void generateColoredCubeSquare()
+    public GameObject LeftKeyboard;
+    private GameObject _createdLeftKeyboard;
+
+    public bool isCreated => _createdMainKeyboard != null;
+
+    public void generateMainKeyboard()
     {
         Vector3 destination = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTrackedRemote) + new Vector3(-0.1f, 1.3f, -0.1f);
 
-        if (_createdKeyboard != null)
+        if (_createdMainKeyboard != null)
         {
-            _createdKeyboard.transform.position = destination;
+            _createdMainKeyboard.transform.position = destination;
         }
         else 
         {
-            //mainCube.transform.position = destination;
-            _createdKeyboard = Instantiate(CubeKeyboard, destination, Quaternion.identity);
+            _createdMainKeyboard = Instantiate(MainKeyboard, destination, Quaternion.identity);
+        }
+    }
+
+
+    public void generateLeftKeyboard()
+    {
+        Vector3 destination = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTrackedRemote) + new Vector3(-0.1f, 1.3f, -0.1f);
+
+        if (_createdLeftKeyboard != null)
+        {
+            _createdLeftKeyboard.transform.position = destination;
+        }
+        else
+        {
+            _createdLeftKeyboard = Instantiate(LeftKeyboard, destination, Quaternion.identity);
         }
     }
 
     public void Clean() 
     {
-        Destroy(_createdKeyboard);
+        Destroy(_createdMainKeyboard);
     }
 
     public void Update()
     {
-        if (OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger) > 0)
+        if (OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger) > 0 && MainKeyboard != null)
         {
-            generateColoredCubeSquare();
+            generateMainKeyboard();
+        }
+
+
+        if (OVRInput.Get(OVRInput.RawAxis1D.LIndexTrigger) > 0 && LeftKeyboard != null)
+        {
+            generateLeftKeyboard();
         }
 
     }
