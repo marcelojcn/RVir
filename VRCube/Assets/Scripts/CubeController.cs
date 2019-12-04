@@ -11,6 +11,8 @@ public class CubeController : MonoBehaviour
     public GameObject MainKeyboard;
     private GameObject _createdMainKeyboard;
 
+    public GameObject RightKeyboard;
+    private GameObject _createdRightKeyboard;
 
     public GameObject LeftKeyboard;
     private GameObject _createdLeftKeyboard;
@@ -36,6 +38,19 @@ public class CubeController : MonoBehaviour
         }
     }
 
+    public void generateRightKeyboard()
+    {
+        Vector3 destination = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTrackedRemote) + new Vector3(-0.1f, 1.3f, -0.1f);
+
+        if (_createdRightKeyboard != null)
+        {
+            _createdRightKeyboard.transform.position = destination;
+        }
+        else
+        {
+            _createdRightKeyboard = Instantiate(MainKeyboard, destination, Quaternion.identity);
+        }
+    }
 
     public void generateLeftKeyboard()
     {
@@ -85,7 +100,7 @@ public class CubeController : MonoBehaviour
             case KeyboardTypeEnum.TwoCube:
                 if (OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger) > 0 && MainKeyboard != null)
                 {
-                    generateMainKeyboard();
+                    generateRightKeyboard();
                 }
 
                 if (OVRInput.Get(OVRInput.RawAxis1D.LIndexTrigger) > 0 && LeftKeyboard != null)
