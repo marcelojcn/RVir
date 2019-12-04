@@ -35,6 +35,7 @@ public class CubeController : MonoBehaviour
         else 
         {
             _createdMainKeyboard = Instantiate(MainKeyboard, destination, Quaternion.identity);
+            _createdMainKeyboard.transform.Rotate(new Vector3(30f, 0f, 0f));
         }
     }
 
@@ -48,7 +49,8 @@ public class CubeController : MonoBehaviour
         }
         else
         {
-            _createdRightKeyboard = Instantiate(MainKeyboard, destination, Quaternion.identity);
+            _createdRightKeyboard = Instantiate(RightKeyboard, destination, Quaternion.identity);
+            _createdRightKeyboard.transform.Rotate(new Vector3(30f, 0f, 0f));
         }
     }
 
@@ -63,6 +65,7 @@ public class CubeController : MonoBehaviour
         else
         {
             _createdLeftKeyboard = Instantiate(LeftKeyboard, destination, Quaternion.identity);
+            _createdLeftKeyboard.transform.Rotate(new Vector3(30f, 0f, 0f));
         }
     }
 
@@ -78,6 +81,7 @@ public class CubeController : MonoBehaviour
         else
         {
             _createdPlanarKeyboard = Instantiate(PlanarKeyboard, destination, Quaternion.identity);
+            _createdPlanarKeyboard.transform.Rotate(new Vector3(30f, 0f, 0f));
         }
     }
 
@@ -98,7 +102,7 @@ public class CubeController : MonoBehaviour
 
                 break;
             case KeyboardTypeEnum.TwoCube:
-                if (OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger) > 0 && MainKeyboard != null)
+                if (OVRInput.Get(OVRInput.RawAxis1D.RIndexTrigger) > 0 && RightKeyboard != null)
                 {
                     generateRightKeyboard();
                 }

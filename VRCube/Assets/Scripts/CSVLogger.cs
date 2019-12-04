@@ -28,8 +28,8 @@ namespace Assets.Utilities
             _keyboardType = KeyboardTypeEnum.OneCube;
 
             _fileName = $"{_playerName}_{_difficulty}_{_keyboardType.ToString()}.csv";
-
-            using (var writer = new StreamWriter($"\\storage\\emulated\\0\\{_fileName}", append: true))
+            
+            using (var writer = new StreamWriter($"/mnt/sdcard/KeyboardTests/{_fileName}", append: true))
             using (var csv = new CsvWriter(writer))
             {
                 csv.WriteHeader<Metric>();
@@ -40,7 +40,7 @@ namespace Assets.Utilities
 
         public void Write(string action, string description = null) 
         {
-            using (var writer = new StreamWriter($"\\storage\\emulated\\0\\{_fileName}", append: true))
+            using (var writer = new StreamWriter($"/mnt/sdcard/KeyboardTests/{_fileName}", append: true))
             using (var csv = new CsvWriter(writer))
             {
                 csv.Configuration.HasHeaderRecord = true;
