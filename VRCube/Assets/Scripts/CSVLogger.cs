@@ -17,43 +17,43 @@ namespace Assets.Utilities
         private string _difficulty;
         private KeyboardTypeEnum _keyboardType;
         private string _fileName;
-
+        private string _root;
 
         private void Awake()
         {
-            //var manager = GameObject.Find("Manager")?.GetComponent<GameManager>();
+            var manager = GameObject.Find("Manager")?.GetComponent<GameManager>();
 
-            //_playerName = manager.theName;
-            //_difficulty = manager.difficulty;
-            //_keyboardType = KeyboardTypeEnum.MonoCubic;
+            _playerName = manager.theName;
+            _difficulty = manager.difficulty;
+            _keyboardType = KeyboardTypeEnum.OneCube;
 
-            //_fileName = $"{_playerName}_{_difficulty}_{_keyboardType.ToString()}.csv";
+            _fileName = $"{_playerName}_{_difficulty}_{_keyboardType.ToString()}.csv";
 
-            //using (var writer = new StreamWriter($"C:\\{_fileName}", append: true))
-            //using (var csv = new CsvWriter(writer))
-            //{
-            //    csv.WriteHeader<Metric>();
+            using (var writer = new StreamWriter($"\\storage\\emulated\\0\\{_fileName}", append: true))
+            using (var csv = new CsvWriter(writer))
+            {
+                csv.WriteHeader<Metric>();
 
-            //    writer.WriteLine();
-            //}
+                writer.WriteLine();
+            }
         }
 
         public void Write(string action, string description = null) 
         {
-            //using (var writer = new StreamWriter($"C:\\Code\\{_fileName}", append: true))
-            //using (var csv = new CsvWriter(writer))
-            //{
-            //    csv.Configuration.HasHeaderRecord = true;
+            using (var writer = new StreamWriter($"\\storage\\emulated\\0\\{_fileName}", append: true))
+            using (var csv = new CsvWriter(writer))
+            {
+                csv.Configuration.HasHeaderRecord = true;
 
-            //    csv.WriteRecord(new Metric 
-            //    {
-            //        Action = action,
-            //        Timestamp = DateTime.Now,
-            //        Description = description
-            //    });
+                csv.WriteRecord(new Metric
+                {
+                    Action = action,
+                    Timestamp = DateTime.Now,
+                    Description = description
+                });
 
-            //    writer.WriteLine();
-            //}
+                writer.WriteLine();
+            }
         }
     }
 }

@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73205880c2910d8468bfbf26b0c19a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreController: {fileID: 0}
+  ScoreController: {fileID: 947041457}
   difficulty: 2
 --- !u!54 &80722719
 Rigidbody:
@@ -1105,7 +1105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73205880c2910d8468bfbf26b0c19a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreController: {fileID: 0}
+  ScoreController: {fileID: 947041457}
   difficulty: 0
 --- !u!54 &266210397
 Rigidbody:
@@ -4226,7 +4226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73205880c2910d8468bfbf26b0c19a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreController: {fileID: 0}
+  ScoreController: {fileID: 947041457}
   difficulty: 1
 --- !u!54 &1401614778
 Rigidbody:
