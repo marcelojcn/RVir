@@ -119,10 +119,26 @@ public class CubeController : MonoBehaviour
                 }
                 break;
         }
+    }
 
-
-        
-
+    public void Reset()
+    {
+        if (_createdLeftKeyboard != null)
+        {
+            Destroy(_createdLeftKeyboard);
+        }
+        if (_createdRightKeyboard != null)
+        {
+            Destroy(_createdRightKeyboard);
+        }
+        if (_createdMainKeyboard != null)
+        {
+            Destroy(_createdMainKeyboard);
+        }
+        if (_createdPlanarKeyboard != null)
+        {
+            Destroy(_createdPlanarKeyboard);
+        }
     }
 }
 

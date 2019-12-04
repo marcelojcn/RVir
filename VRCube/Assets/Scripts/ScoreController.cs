@@ -68,6 +68,14 @@ public class ScoreController : MonoBehaviour
 
     }
 
+    public void Reset() 
+    {
+        _word.text = string.Empty;
+        _text.text = string.Empty;
+
+        _wordsWritten = _lettersMistaken = _backtrackingCount = _score = 0;
+    }
+
     public void AddLetter(string value)
     {
         if (!_word.text.StartsWith(_text.text + value))

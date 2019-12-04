@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-
-
+    public void Reset() 
+    {
+        theName = Guid.NewGuid().ToString();
+    }
 }
