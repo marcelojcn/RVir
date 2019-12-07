@@ -24,7 +24,7 @@ public class CubeController : MonoBehaviour
 
     public void generateMainKeyboard()
     {
-        Vector3 destination = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTrackedRemote) + new Vector3(-0.1f, 1.3f, -0.1f);
+        Vector3 destination = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTrackedRemote) + new Vector3(-0.07f, 1.4f, -0.175f);
 
         if (_createdMainKeyboard != null)
         {
@@ -39,7 +39,7 @@ public class CubeController : MonoBehaviour
 
     public void generateRightKeyboard()
     {
-        Vector3 destination = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTrackedRemote) + new Vector3(-0.1f, 1.3f, -0.1f);
+        Vector3 destination = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTrackedRemote) + new Vector3(-0.07f, 1.4f, -0.175f);
 
         if (_createdRightKeyboard != null)
         {
@@ -54,7 +54,7 @@ public class CubeController : MonoBehaviour
 
     public void generateLeftKeyboard()
     {
-        Vector3 destination = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTrackedRemote) + new Vector3(-0.1f, 1.3f, -0.1f);
+        Vector3 destination = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTrackedRemote) + new Vector3(-0.07f, 1.4f, -0.175f);
 
         if (_createdLeftKeyboard != null)
         {
@@ -70,7 +70,7 @@ public class CubeController : MonoBehaviour
 
     public void generatePlanarKeyboard()
     {
-        Vector3 destination = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTrackedRemote) + new Vector3(-0.1f, 1.3f, -0.1f);
+        Vector3 destination = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTrackedRemote) + new Vector3(-0.5f, 1.4f, -0.175f);
 
         if (_createdPlanarKeyboard != null)
         {

@@ -10,9 +10,15 @@ public class Back : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Leave();
+    }
+
+    public void Leave() 
+    {
         Controller.SetActive(false);
         var scoreController = Controller.GetComponent<ScoreController>();
         scoreController.Reset();
+        scoreController.WorkdIndex = 0;
         var cubeController = Controller.GetComponent<CubeController>();
         cubeController.Reset();
 

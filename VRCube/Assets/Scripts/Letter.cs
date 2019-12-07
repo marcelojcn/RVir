@@ -20,14 +20,14 @@ public class Letter : MonoBehaviour
 
     private DateTime? MouseOverTimestamp;
     private float? _exitTimestamp;
-    //bool space = false;
     private ScoreController _scoreController;
 
-
+    private CSVLogger _logger;
     public Material OutlinedMaterial;
 
     private void Start()
     {
+        _logger = FindObjectOfType<CSVLogger>();
         _scoreController = GameObject.Find($"Controller").gameObject.GetComponent<ScoreController>();
     }
 
@@ -92,8 +92,14 @@ public class Letter : MonoBehaviour
                 _activeDiacritics = true;
             }
 
-            if (OVRInput.GetDown(OVRInput.RawButton.A) || OVRInput.GetDown(OVRInput.RawButton.X))
+            if (OVRInput.GetDown(OVRInput.RawButton.A))
             {
+                _logger.Write("Button Pressed: A");
+                Write();
+            }
+            else if (OVRInput.GetDown(OVRInput.RawButton.X))
+            {
+                _logger.Write("Button Pressed: X");
                 Write();
             }
         }

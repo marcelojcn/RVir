@@ -1,24 +1,39 @@
-﻿using System.Collections;
+﻿using Assets.Utilities;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ToggleDiacritics : MonoBehaviour
 {
     private CubeController _cubeController;
+    private CSVLogger _csvLogger;
     private bool _isActive = false;
+    private Drumstick _drumstick;
+
 
     private void Start()
     {
-        _cubeController = GameObject.Find("Controller").GetComponent<CubeController>();
+        var controller = GameObject.Find("Controller");
+        _cubeController = controller.GetComponent<CubeController>();
+        _csvLogger = controller.GetComponent<CSVLogger>();
 
-        var key = GameObject.Find("DrumsticksKey").GetComponent<Drumstick>();
-        gameObject.SetActive(!key.IsActive);
+        _drumstick = GameObject.Find("DrumsticksKey").GetComponent<Drumstick>();
+    }
+
+    public void Update()
+    {
+        if (_drumstick.IsActive) 
+        {
+            gameObject.SetActive(_drumstick.IsActive);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         _isActive = !_isActive;
         _cubeController.TurnOnDiacritics(_isActive);
+
+        _csvLogger.Write($"Driacritics: {_isActive}");
     }
 
 

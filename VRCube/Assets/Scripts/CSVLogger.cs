@@ -14,19 +14,18 @@ namespace Assets.Utilities
     public class CSVLogger : MonoBehaviour
     {
         private string _playerName;
-        private string _difficulty;
         private KeyboardTypeEnum _keyboardType;
         private string _fileName;
 
         private void OnEnable()
         {
             var manager = GameObject.Find("Manager")?.GetComponent<GameManager>();
+            var cubeController = GameObject.Find("Controller")?.GetComponent<CubeController>();
 
             _playerName = manager.theName;
-            _difficulty = manager.difficulty;
-            _keyboardType = KeyboardTypeEnum.OneCube;
+            _keyboardType = cubeController.KeyboardType;
 
-            _fileName = $"{_playerName}_{_difficulty}_{_keyboardType.ToString()}.csv";
+            _fileName = $"{_playerName}_{_keyboardType.ToString()}.csv";
 
             using (var writer = new StreamWriter($"/mnt/sdcard/KeyboardTests/{_fileName}", append: true))
             using (var csv = new CsvWriter(writer))
@@ -39,6 +38,9 @@ namespace Assets.Utilities
 
         public void Write(string action, string description = null) 
         {
+            var rightControllerPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTrackedRemote);
+            var leftControllerPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTrackedRemote);
+
             using (var writer = new StreamWriter($"/mnt/sdcard/KeyboardTests/{_fileName}", append: true))
             using (var csv = new CsvWriter(writer))
             {
@@ -47,8 +49,18 @@ namespace Assets.Utilities
                 csv.WriteRecord(new Metric
                 {
                     Action = action,
-                    Timestamp = DateTime.Now,
-                    Description = description
+                    Timestamp = Time.time,
+                    Description = description,
+                    Keyboard = _keyboardType.ToString(),
+                    PlayerId = _playerName,
+
+                    RightControllerX = rightControllerPosition.x,
+                    RightControllerY = rightControllerPosition.y,
+                    RightControllerZ = rightControllerPosition.z,
+                    
+                    LeftControllerX = leftControllerPosition.x,
+                    LeftControllerY = leftControllerPosition.y,
+                    LeftControllerZ = leftControllerPosition.z,
                 });
 
                 writer.WriteLine();

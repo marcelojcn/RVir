@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2789439709784790316}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.644, y: 1.81, z: -0.16321349}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 7886826114269361487}
   - {fileID: 1261411285532889560}
@@ -52,11 +52,11 @@ Transform:
   - {fileID: 5499695304748426568}
   - {fileID: 8347692687135205172}
   - {fileID: 960204843202794395}
-  - {fileID: 1652776653791293957}
+  - {fileID: 6717346093595357732}
   - {fileID: 5216612165937829981}
   - {fileID: 4804328870864429592}
   - {fileID: 5672153585594911937}
-  - {fileID: 2568626093249991677}
+  - {fileID: 1929431062158239819}
   - {fileID: 5131597715779237703}
   - {fileID: 6763326714952687787}
   - {fileID: 5492957162729769325}
@@ -591,13 +591,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45ada40d89cb6234ba977883568f7862, type: 3}
---- !u!1 &1652776653791294157 stripped
+--- !u!1 &5361589628850294420 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6667551487083920752, guid: 45ada40d89cb6234ba977883568f7862,
     type: 3}
   m_PrefabInstance: {fileID: 1652776653791294436}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1652776653791293957 stripped
+--- !u!4 &6717346093595357732 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5464864377529303488, guid: 45ada40d89cb6234ba977883568f7862,
     type: 3}
@@ -1119,13 +1119,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e24d97be6fed9f54ba9e887d5085c8f2, type: 3}
---- !u!4 &2568626093249991677 stripped
+--- !u!4 &1929431062158239819 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4135184645144509052, guid: e24d97be6fed9f54ba9e887d5085c8f2,
     type: 3}
   m_PrefabInstance: {fileID: 2568626093249991223}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2568626093249991298 stripped
+--- !u!1 &979049850083103995 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3329250240400017100, guid: e24d97be6fed9f54ba9e887d5085c8f2,
     type: 3}
@@ -2507,7 +2507,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Diacritics.Array.data[0]
       value: 
-      objectReference: {fileID: 1652776653791294157}
+      objectReference: {fileID: 5361589628850294420}
     - target: {fileID: 2165022816689258738, guid: b381d4cb22721d4478979050e1bc92a5,
         type: 3}
       propertyPath: m_fontAsset
@@ -3510,7 +3510,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Diacritics.Array.data[2]
       value: 
-      objectReference: {fileID: 2568626093249991298}
+      objectReference: {fileID: 979049850083103995}
     - target: {fileID: 195133036586860151, guid: 4c4630158bf59564982d10c1447f2b5e,
         type: 3}
       propertyPath: Diacritics.Array.data[3]
