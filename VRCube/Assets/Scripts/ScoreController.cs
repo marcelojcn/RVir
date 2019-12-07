@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class ScoreController : MonoBehaviour
 {
@@ -17,41 +18,38 @@ public class ScoreController : MonoBehaviour
     private string[] _wordsEasy = { "OLÁ", "ABC", "VERDE", "AZUL", "DESERTO" };
     private string[] _wordsMedium = { "SUPER", "ADORÁVEL", "ESPAÇO", "MOCHILA", "TARTARUGA" };
     private string[] _wordsHard = { "HIPÓPOTAMO", "AÁÉÇ", "RESTAURAÇÃO", "ESTÁS", "COMPUTADOR" };
+    private string[] _wordsRandom = { "OLÁ", "ABC", "VERDE", "ESTÁS", "COMPUTADOR", "ESPAÇO", "RESTAURAÇÃO", "HIPÓPOTAMO", "ÓRGÃO" };
 
     private int _wordsWritten = 0;
     private int _lettersMistaken = 0;
     private int _backtrackingCount = 0;
     private int _score = 0;
 
-    public DifficultyTypeEnum DifficultyType = DifficultyTypeEnum.Easy;
-
     private CSVLogger _logger;
 
     // Start is called before the first frame update
     void Start()
     {
-        switch (DifficultyType)
-        {
-            case DifficultyTypeEnum.Medium:
-                _words = _wordsMedium;
-                break;
-            case DifficultyTypeEnum.Hard:
-                _words = _wordsHard;
-                break;
-            case DifficultyTypeEnum.Easy:
-                _words = _wordsHard;
-                break;
-            default:
-                _words = _wordsEasy;
-                break;
-        }
-
+        reshuffle(_wordsRandom);
+        _words = _wordsRandom;
         _text = GameObject.Find($"Text").gameObject.GetComponent<TextMeshPro>();
         _word = GameObject.Find($"Word").gameObject.GetComponent<TextMeshPro>();
         Score = GameObject.Find($"Score").gameObject.GetComponent<TextMeshPro>();
 
         _logger = FindObjectOfType<CSVLogger>();
         SelectWord();
+    }
+
+    void reshuffle(string[] texts)
+    {
+        // Knuth shuffle algorithm :: courtesy of Wikipedia :)
+        for (int t = 0; t < texts.Length; t++)
+        {
+            string tmp = texts[t];
+            int r = Random.Range(t, texts.Length);
+            texts[t] = texts[r];
+            texts[r] = tmp;
+        }
     }
 
     // Update is called once per frame
@@ -75,6 +73,8 @@ public class ScoreController : MonoBehaviour
 
         _wordsWritten = _lettersMistaken = _backtrackingCount = _score = 0;
     }
+
+ 
 
     public void AddLetter(string value)
     {
@@ -103,16 +103,12 @@ public class ScoreController : MonoBehaviour
 
     private void SelectWord()
     {
-        _word.text = _words[UnityEngine.Random.Range(0, _words.Length)];
+        for(int i = 0; i < _words.Length; i++)
+        {
+            _word.text = _words[i];
+        }
+        
 
         _logger.Write($"Word selected: {_word.text}");
     }
-}
-
-
-public enum DifficultyTypeEnum 
-{
-    Easy,
-    Medium,
-    Hard
 }
