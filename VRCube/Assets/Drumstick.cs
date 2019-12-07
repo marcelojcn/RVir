@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Drumstick : MonoBehaviour
 {
@@ -11,6 +9,8 @@ public class Drumstick : MonoBehaviour
     public GameObject LeftSphere;
 
     public bool IsActive = false;
+
+    public Material OutlinedMaterial;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -31,6 +31,23 @@ public class Drumstick : MonoBehaviour
             LeftSphere.SetActive(true);
 
             IsActive = false;
+        }
+
+        ToggleOutlined(IsActive);
+    }
+
+    private void ToggleOutlined(bool status)
+    {
+        if (status)
+        {
+            GetComponent<Renderer>().material = OutlinedMaterial;
+        }
+        else
+        {
+            //Fetch the Material from the Renderer of the GameObject
+            Material material = GetComponent<Renderer>().material;
+            material.shader = Shader.Find("Standard");
+            material.renderQueue = 3000;
         }
     }
 }

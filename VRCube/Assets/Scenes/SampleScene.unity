@@ -3844,6 +3844,7 @@ MonoBehaviour:
   RightSphere: {fileID: 1176431991}
   LeftSphere: {fileID: 1669628089}
   IsActive: 0
+  OutlinedMaterial: {fileID: 2100000, guid: 4116c5163522a4245900d8da9b8f6bef, type: 2}
 --- !u!54 &1298818863
 Rigidbody:
   m_ObjectHideFlags: 0
