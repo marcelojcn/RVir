@@ -22,7 +22,7 @@ public class Letter : MonoBehaviour
     private float? _exitTimestamp;
     //bool space = false;
     private ScoreController _scoreController;
-    private Drumstick _drumstick;
+
 
     public Material OutlinedMaterial;
 
@@ -30,7 +30,6 @@ public class Letter : MonoBehaviour
     {
         CreatedDiacritics = new List<GameObject>();
         _scoreController = GameObject.Find($"Controller").gameObject.GetComponent<ScoreController>();
-        _drumstick = GameObject.Find($"DrumsticksKey").gameObject.GetComponent<Drumstick>();
     }
 
 
@@ -39,7 +38,7 @@ public class Letter : MonoBehaviour
         //Fetch the Material from the Renderer of the GameObject
         GetComponent<Renderer>().material = OutlinedMaterial;
 
-        if (_drumstick.IsActive)
+        if (other.gameObject.name.Equals("DrumstickSphere"))
         {
             Write();
         }
