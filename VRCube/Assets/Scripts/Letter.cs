@@ -16,7 +16,7 @@ public class Letter : MonoBehaviour
     public bool IsDiacritic;
 
     public List<GameObject> Diacritics;
-    private List<GameObject> CreatedDiacritics;
+    private bool _activeDiacritics = false;
 
     private DateTime? MouseOverTimestamp;
     private float? _exitTimestamp;
@@ -28,7 +28,6 @@ public class Letter : MonoBehaviour
 
     private void Start()
     {
-        CreatedDiacritics = new List<GameObject>();
         _scoreController = GameObject.Find($"Controller").gameObject.GetComponent<ScoreController>();
     }
 
@@ -59,7 +58,7 @@ public class Letter : MonoBehaviour
                 MouseOverTimestamp = null;
             }
 
-            if (CreatedDiacritics.Any())
+            if (_activeDiacritics)
             {
                 _exitTimestamp = Time.time;
             }
@@ -78,35 +77,11 @@ public class Letter : MonoBehaviour
             }
 
             // If it is not a diacritic and none of the diacritic were created 
-            if (!IsDiacritic && !CreatedDiacritics.Any() && Diacritics.Any() && (DateTime.Now - MouseOverTimestamp.Value).Seconds >= 1)
+            if (!IsDiacritic && Diacritics.Any() && (DateTime.Now - MouseOverTimestamp.Value).Seconds >= 1)
             {
-                int index = 0;
-
-                float spacing = 0.01f;
-
-                // Draw Diacritics
-                for (float y = (transform.position.y + (0.1f + spacing)); y >= (transform.position.y - (0.1f + spacing)); y -= (0.1f + spacing))
-                {
-                    // 1.09f instead of 1.08f because of float precision
-                    for (float x = (transform.position.x - (0.1f + spacing)); x <= (transform.position.x + (0.1f + spacing)); x += (0.1f + spacing))
-                    {
-                        // Check if not drawing Diacritic over the Letter
-                        if (!(x == transform.position.x && y == transform.position.y) && index < Diacritics.Count)
-                        {
-                            // Instantiate the Diacritic
-                            GameObject newDiacritic = Instantiate(Diacritics[index], new Vector3(x, y, transform.position.z), Quaternion.identity);
-                            newDiacritic.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                            newDiacritic.transform.parent = transform.parent;
-
-                            // Save the created Diacritic's object
-                            CreatedDiacritics.Add(newDiacritic);
-
-                            index++;
-                        }
-                    }
-                }
+                Diacritics.ForEach(d => d.SetActive(true));
+                _activeDiacritics = true;
             }
-
 
             if (OVRInput.GetDown(OVRInput.RawButton.A) || OVRInput.GetDown(OVRInput.RawButton.X))
             {
@@ -144,13 +119,11 @@ public class Letter : MonoBehaviour
     public void Clean() 
     {
         // If this Letter has Created Diacritics
-        if (CreatedDiacritics.Any()) 
+        if (Diacritics.Any()) 
         {
             // Delete all
-            CreatedDiacritics.ForEach(d => Destroy(d));
-
-            // Reset CreatedDiacritics list
-            CreatedDiacritics = new List<GameObject>();
+            Diacritics.ForEach(d => d.SetActive(false));
+            _activeDiacritics = false;
         }
 
         // If a letter was written then clean MouseOverTimeStamp 
