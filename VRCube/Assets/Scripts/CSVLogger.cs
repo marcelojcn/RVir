@@ -17,9 +17,8 @@ namespace Assets.Utilities
         private string _difficulty;
         private KeyboardTypeEnum _keyboardType;
         private string _fileName;
-        private string _root;
 
-        private void Awake()
+        private void OnEnable()
         {
             var manager = GameObject.Find("Manager")?.GetComponent<GameManager>();
 
@@ -29,7 +28,7 @@ namespace Assets.Utilities
 
             _fileName = $"{_playerName}_{_difficulty}_{_keyboardType.ToString()}.csv";
 
-            using (var writer = new StreamWriter($"\\storage\\emulated\\0\\{_fileName}", append: true))
+            using (var writer = new StreamWriter($"/mnt/sdcard/KeyboardTests/{_fileName}", append: true))
             using (var csv = new CsvWriter(writer))
             {
                 csv.WriteHeader<Metric>();
@@ -40,7 +39,7 @@ namespace Assets.Utilities
 
         public void Write(string action, string description = null) 
         {
-            using (var writer = new StreamWriter($"\\storage\\emulated\\0\\{_fileName}", append: true))
+            using (var writer = new StreamWriter($"/mnt/sdcard/KeyboardTests/{_fileName}", append: true))
             using (var csv = new CsvWriter(writer))
             {
                 csv.Configuration.HasHeaderRecord = true;
