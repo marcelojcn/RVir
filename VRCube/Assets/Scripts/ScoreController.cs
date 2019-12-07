@@ -28,7 +28,7 @@ public class ScoreController : MonoBehaviour
     private CSVLogger _logger;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         switch (DifficultyType)
         {

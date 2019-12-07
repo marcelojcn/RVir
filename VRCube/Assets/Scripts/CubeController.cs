@@ -22,8 +22,6 @@ public class CubeController : MonoBehaviour
 
     public KeyboardTypeEnum KeyboardType = KeyboardTypeEnum.OneCube;
 
-    public bool isCreated => _createdMainKeyboard != null;
-
     public void generateMainKeyboard()
     {
         Vector3 destination = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTrackedRemote) + new Vector3(-0.1f, 1.3f, -0.1f);
@@ -138,6 +136,34 @@ public class CubeController : MonoBehaviour
         if (_createdPlanarKeyboard != null)
         {
             Destroy(_createdPlanarKeyboard);
+        }
+    }
+
+    public void TurnOnDiacritics(bool status)
+    {
+        if (_createdMainKeyboard != null)
+        {
+            TurnKeyboardDiacritics(_createdMainKeyboard, status);
+        }
+        if (_createdRightKeyboard != null)
+        {
+            TurnKeyboardDiacritics(_createdRightKeyboard, status);
+        }
+        if (_createdLeftKeyboard != null)
+        {
+            TurnKeyboardDiacritics(_createdLeftKeyboard, status);
+        }
+        if (_createdPlanarKeyboard != null)
+        {
+            TurnKeyboardDiacritics(_createdPlanarKeyboard, status);
+        }
+    }
+
+    private void TurnKeyboardDiacritics(GameObject gameObject, bool status)
+    {
+        foreach (Letter child in gameObject.GetComponentsInChildren<Letter>())
+        {
+            child.StatusDiacritics(status);
         }
     }
 }

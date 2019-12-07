@@ -37,6 +37,9 @@ public class Letter : MonoBehaviour
         //Fetch the Material from the Renderer of the GameObject
         GetComponent<Renderer>().material = OutlinedMaterial;
 
+        if (string.IsNullOrWhiteSpace(value))
+        { return; }
+
         if (other.gameObject.name.Equals("DrumstickSphere"))
         {
             Write();
@@ -49,6 +52,9 @@ public class Letter : MonoBehaviour
         Material material = GetComponent<Renderer>().material;
         material.shader = Shader.Find("Standard");
         material.renderQueue = 3000;
+
+        if (string.IsNullOrWhiteSpace(value))
+        { return; }
 
         if (!other.gameObject.name.Equals("DrumstickSphere"))
         {
@@ -67,6 +73,9 @@ public class Letter : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (string.IsNullOrWhiteSpace(value))
+        { return; }
+
         if (!other.gameObject.name.Equals("DrumstickSphere"))
         {
             // If not a Diacritic and has Diacritics and no Timestamp saved
@@ -114,6 +123,12 @@ public class Letter : MonoBehaviour
             // Clean himself
             Clean();
         }
+    }
+
+    public void StatusDiacritics(bool status) 
+    {
+        Diacritics.ForEach(d => d.SetActive(status));
+        _activeDiacritics = status;
     }
 
     public void Clean() 

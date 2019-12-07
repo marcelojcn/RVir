@@ -10,5 +10,7 @@ public class Play : MonoBehaviour
     {
         Controller.SetActive(true);
         transform.parent.gameObject.SetActive(false);
+        var scoreController = Controller.GetComponent<ScoreController>();
+        scoreController.Start();
     }
 }
