@@ -14,6 +14,7 @@ public class ScoreController : MonoBehaviour
     private TextMeshPro _word;
     private TextMeshPro _text;
 
+    private int i = 0;
     private string[] _words = {};
     private string[] _wordsEasy = { "OLÁ", "ABC", "VERDE", "AZUL", "DESERTO" };
     private string[] _wordsMedium = { "SUPER", "ADORÁVEL", "ESPAÇO", "MOCHILA", "TARTARUGA" };
@@ -97,18 +98,18 @@ public class ScoreController : MonoBehaviour
             _text.text = string.Empty;
             _wordsWritten++;
             _logger.Write($"Finished word: {_word.text}", $"Finished Words: {_wordsWritten}");
+            i++;
             SelectWord();
         }
     }
 
     private void SelectWord()
     {
-        for(int i = 0; i < _words.Length; i++)
-        {
+        
+        if (i < _words.Length) {
             _word.text = _words[i];
         }
-        
-
+    
         _logger.Write($"Word selected: {_word.text}");
     }
 }
